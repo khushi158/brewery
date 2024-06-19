@@ -1,0 +1,21 @@
+.todoHolder{
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+
+  background-color: aquamarine;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 20px;
+}
+.App{
+  background-image: linear-gradient(to top, #ff0000 0%, #dfbc71 1%, #ff4747 100%);
+}

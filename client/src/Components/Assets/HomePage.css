@@ -1,0 +1,108 @@
+/* HomePage.css */
+
+.home-page-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    height: 100vh;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    
+  }
+  
+  .search-control {
+    width: 50%;
+    margin-bottom: 20px;
+    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: row;
+  }
+  .radioGroups{
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+
+  }
+  .search-input {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  .search-result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+   
+  }
+  .radioHolder{
+    
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+  }
+  .inp-sec{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .myListings{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    overflow-x: scroll;
+    /* animation: scrollAnimation 10s linear infinite; */
+  }
+  .lc-2{
+    overflow-x: scroll;
+    animation: scrollAnimation 4s linear infinite;
+  }
+  .lc-2 :hover{
+    cursor: pointer;
+  }
+
+  #style-13::-webkit-scrollbar-track
+  {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+      border-radius: 10px;
+      background-color: #CCCCCC;
+  }
+  
+  #style-13::-webkit-scrollbar
+  {
+      width: 12px;
+      background-color: #F5F5F5;
+  }
+  
+  #style-13::-webkit-scrollbar-thumb
+  {
+      border-radius: 10px;
+      background-color: #2971d6;
+      background-image: -webkit-linear-gradient(90deg,
+                                                transparent,
+                                                rgba(0, 0, 0, 0.4) 50%,
+                                                transparent,
+                                                transparent)
+  }
+  @keyframes scrollAnimation {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%); /* Adjust the percentage based on the width of your content */
+    }
+  }

@@ -1,0 +1,33 @@
+.signup-form{
+   
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+   
+}
+.signup-form1{
+    border: 1px solid gray;
+    border-radius: 10px;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-around;
+    background-color: aliceblue;
+    flex-direction: column;
+    align-items: center;
+}
+.signup-form1-inp-btn{
+    width: 20%;
+}
+.myfavimg{
+    width: 200px; /* Adjust the size as needed */
+    height: auto;
+    animation: bounce 1s infinite alternate;
+}
+@keyframes bounce {
+    to {
+      transform: translateY(-20px);
+    }
+  }
