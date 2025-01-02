@@ -9,14 +9,14 @@ const path=require("path");
 
 const app=express();
 app.use(cors({
-    origin: 'https://brewery-2-8bho.onrender.com', // Allow only this origin
+    origin: '*', // Allow only this origin
     methods: 'GET,POST,PUT,DELETE',  // Allow these HTTP methods
     credentials: true,  // If you need to send cookies or authorization headers
 }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"build")));
 app.get("/",(req,res)=>{
-    res.sendFile(path.join(__dirname,"build/index.html"));
+    res.sendFile(path.join(__dirname,"build",index.html));
 })
 
 const router=require("./routes");
