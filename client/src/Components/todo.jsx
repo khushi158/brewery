@@ -8,7 +8,7 @@ const Todo = ({element,setMessage}) => {
   
   async function handleUpdate(id,status){
     console.log("clicked");
-    const res=await fetch(`${import.meta.env.VITE_API_URL}/api/todos/${id}`,{
+    const res=await fetch(`${process.env.VITE_API_URL}/api/todos/${id}`,{
       method:"PUT",
       boyd:JSON.stringify({status:status}),
       headers:{
