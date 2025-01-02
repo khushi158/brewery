@@ -25,7 +25,12 @@ const HomePage = () => {
       const{login,logout} =useAuth();
   
 
+  useEffect(()=>{
 
+      if(JSON.parse(localStorage.getItem("user"))==null)navigator('/login');
+
+
+  },[])
 
 
 

@@ -28,7 +28,7 @@ const Individual = () => {
         
     }
     async function getMongoData(){
-        const res=await fetch("http://localhost:5000/api/todos");
+        const res=await fetch(`${import.meta.env.VITE_API_URL}/api/todos`);
        
         const todos=await res.json();
         setData(todos.filter((e)=>e.todo===cardId));
@@ -67,7 +67,7 @@ const Individual = () => {
       setRev((prevRev) => [...prevRev, {text,starValue}]);
   
       try {
-        const res = await axios.put(`http://localhost:5000/api/todos/${data[z]._id}`, {
+        const res = await axios.put(`${import.meta.env.VITE_API_URL}/api/todos/${data[z]._id}`, {
           reviews: [...rev,  {text,starValue}], // Use the updated state directly here
         });
   
@@ -85,7 +85,7 @@ const Individual = () => {
       setRev([...rev,  {text,starValue}]);
   
       try {
-        const res = await axios.post("http://localhost:5000/api/todos", {
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/todos`, {
           todo: cardId,
           reviews: [ {text,starValue}],
         });

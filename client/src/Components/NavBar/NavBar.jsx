@@ -25,6 +25,8 @@ const NavBar = () => {
             handleClose();
             logout();
             setUserData('');
+            localStorage.clear();  // Clears all items from localStorage
+
             navigator('/login');
         },3000)
     }

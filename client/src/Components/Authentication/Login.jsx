@@ -51,7 +51,7 @@ const Login = () => {
 
   async function postDataToCustomAPI() {
     try {
-      const response = await fetch('http://localhost:5000/api/signin', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -68,12 +68,13 @@ const Login = () => {
         setLoading(false);
         console.log('Logged in successfully!', result);
         setMessageSnack('Signed In successfully! ✅');
-        
+        localStorage.setItem("user", JSON.stringify({ email: gotdata.Email }));
         handleSnackClick();
         setTimeout(() => {
           navigate('/');
           login();
         }, 1000);
+      
       } else {
         setLoading(false);
         setMessageSnack(result.message || 'Login failed, check your details ☠️');
