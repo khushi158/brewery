@@ -10,7 +10,7 @@ import Slide from '@mui/material/Slide';
 import { useNavigate } from 'react-router';
 import { AuthContext, useAuth } from '../../Contexts/Authcontext';
 import img1 from '../Assets/Images/pizza 1.svg';
-
+const apiurl=process.env.REACT_APP_API_URL;
 function TransitionRight(props) {
   return <Slide {...props} direction="right" />;
 }
@@ -22,6 +22,7 @@ const Login = () => {
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const { login, setUserData } = useAuth();
+console.log(apiurl);
 
   const handleSnackClick = () => {
     setOpen(true);
@@ -51,7 +52,7 @@ const Login = () => {
 
   async function postDataToCustomAPI() {
     try {
-      const response = await fetch(`${process.env.VITE_API_URL}/api/signin`, {
+      const response = await fetch(`${apiurl}/api/signin`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

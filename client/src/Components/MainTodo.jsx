@@ -10,7 +10,7 @@ export const MainTodo = () => {
 
   useEffect(()=>{
       async function getTodos(){
-        const res=await fetch(`${process.env.VITE_API_URL}/api/todos`);
+        const res=await fetch(`${process.env.REACT_APP_API_URL}/api/todos`);
        
         const todos=await res.json();
         
@@ -24,7 +24,7 @@ export const MainTodo = () => {
       event.preventDefault();
     
       try {
-        const res = await axios.post(`${process.env.VITE_API_URL}api/todos`, {
+        const res = await axios.post(`${process.env.REACT_APP_API_URL}api/todos`, {
           todo: text,
         });
     

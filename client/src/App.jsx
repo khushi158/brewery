@@ -23,6 +23,7 @@ function App() {
   const {isAuthenticated}=useContext(AuthContext);
   const [data, setData] = useState({});
  
+console.log(process.env);
 
   return (
     <main className="App">
