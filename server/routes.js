@@ -7,16 +7,16 @@ const port=process.env.PORT||4000;
 const {getConnectedClient}=require("./database");
 
 
-const getCollection=()=>{
+const getCollection=(collectionName)=>{
     const client=getConnectedClient();
-    const collection=client.db("TODO").collection("todos");
+    const collection=client.db("TODO").collection(`${collectionName}`);
     return collection;
 }
 
 //get
 router.get('/todos',async (req,res)=>{
 
-    const collection=getCollection();
+    const collection=getCollection("todos");
     const todos=await collection.find({}).toArray();
 
     res.status(200).json(todos)
@@ -27,7 +27,7 @@ router.get('/todos',async (req,res)=>{
 
 router.post('/todos',async (req,res)=>{
 
-    const collection=getCollection();
+    const collection=getCollection("todos");
    
     const{todo,reviews=[]}=req.body;
 
@@ -47,7 +47,7 @@ router.post('/todos',async (req,res)=>{
 
 router.delete('/todos/:id',async(req,res)=>{
     res.status(200).json({mssg:"del req to /api/todo/:id"})
-    const collection=getCollection();
+    const collection=getCollection("todos");
     const _id=new ObjectId(req.params.id);
 
 
@@ -59,7 +59,7 @@ router.delete('/todos/:id',async(req,res)=>{
 //put
 
 router.put('/todos/:id', async (req, res) => {
-    const collection = getCollection();
+    const collection = getCollection("todos");
     const _id = new ObjectId(req.params.id);
 
     // Destructure the 'reviews' property from the request body
@@ -76,6 +76,75 @@ router.put('/todos/:id', async (req, res) => {
     res.status(200).json(updatedTodo);
 });
 
+
+router.get('/auth', async (req, res) => {
+    try {
+        const collection = getCollection('auth');
+        const users = await collection.find({}).toArray();
+        return res.status(200).json(users);
+      } catch (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+    
+});
+
+router.post('/signup', async (req, res) => {
+    const { email, password } = req.body;
+  
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+  
+    try {
+      const collection = getCollection('auth');
+  
+      // Check if the user already exists
+      const existingUser = await collection.findOne({ email });
+      if (existingUser) {
+        return res.status(400).json({ message: 'Email already registered' });
+      }
+  
+    
+    
+  
+      // Insert the new user into the database
+      const result = await collection.insertOne({ email, password });
+  
+      return res.status(201).json({ message: 'User registered successfully', userId: result.insertedId });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+
+
+
+
+  router.post('/signin', async (req, res) => {
+    const { email, password } = req.body;
+  
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
+    }
+  
+    try {
+      const collection = getCollection('auth');
+  
+      // Find the user by email
+      const user = await collection.findOne({ email });
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid email or password' });
+      }
+  
+     
+      return res.status(200).json({ message: 'Sign-in successful' });
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
 
 
 module.exports =router;

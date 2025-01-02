@@ -3,8 +3,7 @@
 const{MongoClient,ServerApiVersion} = require('mongodb');
 
 
-const url="mongodb+srv://khushibanchhor21:KmYBIrdTWXp79tdF@cluster0.sjwduyx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
+const url="mongodb+srv://kuchi:kuchi1428@cluster0.sjwduyx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 const options={
     serverApi:{
         version:ServerApiVersion.v1,

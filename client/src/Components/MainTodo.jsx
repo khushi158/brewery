@@ -10,7 +10,7 @@ export const MainTodo = () => {
 
   useEffect(()=>{
       async function getTodos(){
-        const res=await fetch("/api/todos");
+        const res=await fetch("http://localhost:5000/api/todos");
        
         const todos=await res.json();
         
@@ -24,7 +24,7 @@ export const MainTodo = () => {
       event.preventDefault();
     
       try {
-        const res = await axios.post("/api/todos", {
+        const res = await axios.post("http://localhost:5000/api/todos", {
           todo: text,
         });
     
