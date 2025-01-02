@@ -9,7 +9,7 @@ const path=require("path");
 
 const app=express();
 app.use(cors({
-    origin: 'http://localhost:3001', // Allow only this origin
+    origin: 'https://brewery-2-8bho.onrender.com', // Allow only this origin
     methods: 'GET,POST,PUT,DELETE',  // Allow these HTTP methods
     credentials: true,  // If you need to send cookies or authorization headers
 }));
